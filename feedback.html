@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="shortcut icon" type="image/x-icon" href="/images/favi.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Contact Us</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" href="./contact_us.css" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="Scroll_and_progressbar.css" />
+        <style>
+            /* Custom popup styles */
+            .popup {
+                display: none;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 300px;
+                background-color: #fff;
+                border: 2px solid #ea5541;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                border-radius: 5px;
+            }
+
+            .popup h3 {
+                color: #ea5541;
+                font-size: 18px;
+                margin: 0;
+            }
+
+            .popup p {
+                color: #333;
+                font-size: 14px;
+                margin: 10px 0;
+            }
+
+            .popup button {
+                background-color: #ea5541;
+                color: #fff;
+                border: none;
+                padding: 8px 16px;
+                cursor: pointer;
+                border-radius: 4px;
+                float: right;
+            }
+
+            .overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+        </style>
+
+
+
+        <!-- Script for Navbar Toggle -->
+        <script>
+            function toggleMenu() {
+                const menu = document.getElementById("nav-menu");
+                menu.classList.toggle("active");
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <header class="navbar">
+            <div class="logo">
+                <h2><a class="home-link" href="index.html">WordWise</a></h2>
+            </div>
+
+            <button class="toggle-button" onclick="toggleMenu()">
+                &#9776;
+                <!-- Hamburger icon -->
+            </button>
+
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Leading Blog</a></li>
+                    <li><a href="start_writing.html">Start Writing</a></li>
+                    <li><a href="category.html">Categories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact_us.html">Contact Us</a></li>
+                    <li><a href="feedback.html">Give Feedback</a></li>
+                </ul>
+            </nav>
+            <!-- Navigation Bar Ends -->
+            <div class="auth-buttons">
+                <a href="#login" class="login-btn" onclick="openForm('login')">Login</a>
+                <a href="#signup" class="signup-btn" onclick="openForm('signup')">Signup</a>
+            </div>
+
+            <!-- Login Form -->
+            <div class="form-popup" id="loginForm">
+                <form class="form-container" onsubmit="return validateLoginForm()">
+                    <h2>Login</h2>
+                    <label for="loginEmail"><b>Email</b></label>
+                    <input type="email" id="loginEmail" placeholder="Enter Email" name="email" required>
+
+                    <div class="form-group position-relative">
+                        <label for="loginPsw"><b>Password</b></label>
+                        <input type="password" id="loginPsw" placeholder="Enter Password" name="psw" required
+                            minlength="6">
+                        <i class="bi bi-eye eye-icon" id="toggleLoginPassword"
+                            onclick="togglePasswordVisibility('loginPsw', 'toggleLoginPassword')"></i>
+                    </div>
+
+                    <button type="submit" class="btn">LOGIN</button>
+                    <button type="button" class="btn cancel" onclick="closeForm('login')">CLOSE</button>
+                </form>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="form-popup" id="signupForm">
+                <form class="form-container" onsubmit="return validateSignupForm()">
+                    <h2>Signup</h2>
+
+                    <div class="form-group">
+                        <label for="name"><b>Full Name</b></label>
+                        <input type="text" id="name" placeholder="Enter Full Name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupEmail"><b>Email</b></label>
+                        <input type="email" id="signupEmail" placeholder="Enter Email" name="email" required>
+                    </div>
+
+                    <div class="form-group position-relative">
+                        <label for="signupPsw"><b>Password</b></label>
+                        <input type="password" id="signupPsw" placeholder="Enter Password" name="psw" required
+                            minlength="6">
+                        <i class="bi bi-eye eye-icon" id="toggleSignupPassword"
+                            onclick="togglePasswordVisibility('signupPsw', 'toggleSignupPassword')"></i>
+                    </div>
+
+                    <div class="form-group position-relative">
+                        <label for="confirmPsw"><b>Confirm Password</b></label>
+                        <input type="password" id="confirmPsw" placeholder="Confirm Password" name="confirmPsw" required
+                            minlength="6">
+                        <i class="bi bi-eye eye-icon" id="toggleConfirmPassword"
+                            onclick="togglePasswordVisibility('confirmPsw', 'toggleConfirmPassword')"></i>
+                    </div>
+
+                    <button type="submit" class="btn">SIGNUP</button>
+                    <button type="button" class="btn cancel" onclick="closeForm('signup')">CLOSE</button>
+                </form>
+            </div>
+
+            <!-- Bootstrap Icons and Script for Eye Icon Functionality -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+            <script>
+                function togglePasswordVisibility(passwordFieldId, iconId) {
+                    const passwordField = document.getElementById(passwordFieldId);
+                    const togglePassword = document.getElementById(iconId);
+                    if (passwordField.type === 'password') {
+                        passwordField.type = 'text';
+                        togglePassword.classList.remove('bi-eye');
+                        togglePassword.classList.add('bi-eye-slash');
+                    } else {
+                        passwordField.type = 'password';
+                        togglePassword.classList.remove('bi-eye-slash');
+                        togglePassword.classList.add('bi-eye');
+                    }
+                }
+            </script>
+
+            <style>
+                /* Form Container Styles */
+                .form-popup {
+                    width: 400px;
+                    margin: auto;
+                    background-color: #ffffff;
+                    border-radius: 10px;
+                    padding: 20px;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                }
+
+                .form-container h2 {
+                    margin-bottom: 20px;
+                    color: #333;
+                }
+
+                .form-control {
+                    border-radius: 5px;
+                    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+                    transition: border-color 0.3s;
+                }
+
+                .form-control:focus {
+                    border-color: #007bff;
+                    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+                }
+
+                .btn {
+                    margin-top: 15px;
+                    border-radius: 5px;
+                }
+
+                .eye-icon {
+                    position: absolute;
+                    right: 15px;
+                    top: 38px;
+                    /* Adjust according to input field height */
+                    cursor: pointer;
+                    color: #007bff;
+                }
+
+                .position-relative {
+                    position: relative;
+                }
+
+                .btn-block {
+                    width: 100%;
+                }
+
+                /* Hover Effects */
+                .btn:hover {
+                    background-color: #0056b3;
+                    border-color: #0056b3;
+                }
+
+                .btn.cancel:hover {
+                    background-color: #6c757d;
+                    border-color: #6c757d;
+                }
+            </style>
+
+            <script src="signup.js"></script>
+            <!-- Link to your JavaScript file -->
+
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider">
+                        <img src="https://img.icons8.com/emoji/48/000000/sun-emoji.png" alt="Sun"
+                            class="icon sun-icon" />
+                        <img src="https://img.icons8.com/emoji/48/000000/crescent-moon-emoji.png" alt="Moon"
+                            class="icon moon-icon" />
+                    </div>
+                </label>
+                <span id="mode-label"></span>
+                    
+            </div>
+        </header>
+
+        <div class="content">
+            <h3>We Value Your Feedback</h3>
+            <div class="feedback-box">
+                <form id="feedback-box" action="#" method="post">
+                    <div class="star-rating" aria-label="Rating" role="radiogroup">
+                        <input type="radio" id="star1" name="rating" value="1" />
+                        <label for="star1" title="1 star">★</label>
+                        <input type="radio" id="star2" name="rating" value="2" />
+                        <label for="star2" title="2 stars">★</label>
+                        <input type="radio" id="star3" name="rating" value="3" />
+                        <label for="star3" title="3 stars">★</label>
+                        <input type="radio" id="star4" name="rating" value="4" />
+                        <label for="star4" title="4 stars">★</label>
+                        <input type="radio" id="star5" name="rating" value="5" />
+                        <label for="star5" title="5 stars">★</label>
+                    </div>
+                    <textarea class="feed-msg" rows="7" cols="45" placeholder="Your Comments . . ."
+                        required></textarea><br />
+                    <button style="border-radius: 10px;" type="submit">Submit Feedback</button>
+                </form>
+            </div>
+            <div id="thank-you-message" class="thank-feed">Thank you for your response!</div>
+            <style>
+                body {
+                    font-family: "Poppins", sans-serif;
+                    background-color: #f4f4f4;
+                    margin: 0;
+                    padding: 0;
+                    color: #333;
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100vh;
+                }
+
+                footer {
+                    background-color: #C4D7FF;
+                    color: white;
+                    text-align: center;
+                    padding: 10px 0;
+                    position: relative;
+                    bottom: 0;
+                    width: 100%;
+                }
+
+                .content {
+                    margin: 15px;
+                    padding: 15px;
+                    background-color: #fff;
+                    border-radius: 5px;
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                h3 {
+                    text-align: center;
+                    color: #2c3e50;
+                }
+
+                .star-rating {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 10px;
+                }
+
+                .star-rating input {
+                    display: none;
+                }
+
+                .star-rating label {
+                    font-size: 3.5rem;
+                    color: #ddd;
+                    cursor: pointer;
+                    transition: color 0.2s;
+                }
+
+                .star-rating input:checked~label {
+                    color: #ffdd00;
+                }
+
+                .star-rating label:hover,
+                .star-rating label:hover~label {
+                    color: #ffdd00;
+                }
+
+                button {
+                    padding: 10px 20px;
+                    background-color: #ff5733;
+                    color: white;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 16px;
+                    transition: background-color 0.3s;
+                }
+
+                button:hover {
+                    background-color: #e64a19;
+                }
+
+                textarea {
+                    width: 100%;
+                    max-width: 500px;
+                    padding: 10px;
+                    margin-top: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                }
+
+                .feedback-box {
+                    border: 1px solid #939aa1;
+                    width: 40%;
+                    min-width: 400px;
+                    min-height: 350px;
+                    border-radius: 15px;
+                    background-color: #edf6ff;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                #thank-you-message {
+                    text-align: center;
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid #939aa1;
+                    width: 40%;
+                    min-width: 400px;
+                    min-height: 350px;
+                    border-radius: 15px;
+                    background-color: #edf6ff;
+                    font-size: 2rem;
+                    font-weight: 500;
+                    color: green;
+                }
+            </style>
+        </div>
+
+        <script>
+            const stars = document.querySelectorAll('.star-rating input');
+            stars.forEach(star => {
+                star.addEventListener('change', function () {
+                    stars.forEach(s => {
+                        const label = document.querySelector(`label[for="${s.id}"]`);
+                        label.style.color = '#ddd'; // Reset color for unselected stars
+                    });
+                    this.checked = true;
+                    const currentStarValue = this.value;
+                    for (let i = 1; i <= currentStarValue; i++) {
+                        const label = document.querySelector(`label[for="star${i}"]`);
+                        label.style.color = '#ffdd00'; // Highlight selected stars
+                    }
+                });
+            });
+
+            const form = document.getElementById('feedback-box');
+            const feedbackBox = document.querySelector('.feedback-box');
+            const thankYouMessage = document.getElementById('thank-you-message');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                feedbackBox.style.display = 'none'; // Hide the feedback box
+                thankYouMessage.style.display = 'flex'; // Show thank-you message
+                setTimeout(function () {
+                    window.location.href = 'index.html'; // Redirect after 5 seconds
+                }, 5000);
+            });
+        </script>
+
+        <script src="./darkMode.js"></script>
+
+        <script src="progress_bar.js"></script>
+
+        <script src="main.js"></script>
+
+        <!-- added script for contact form  -->
+
+        <script src="contact_us.js"></script>
+    </body>
+
+</html>
