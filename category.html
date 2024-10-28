@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>WordWise</title>
-        <link rel="shortcut icon" type="image/x-icon" href="/images/favi.png" />
-        <!--font awesome-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <!--swiper slider css-->
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordWise</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favi.png" />
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--swiper slider css-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
-        <!--css-->
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="category.css">
-        <link rel="stylesheet" href="Scroll_and_progressbar.css">
+    <!--css-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="category.css">
+    <link rel="stylesheet" href="Scroll_and_progressbar.css">
 
         <style>
             * {
@@ -43,31 +43,38 @@
 
         <div class="layout-container" style="margin-bottom: 4rem;">
 
-        <header class="navbar">
-            <div class="logo">
-                <h2><a class="home-link" href="index.html">WordWise</a></h2>
+        <header>
+    
+    
+    
+            <div class="logo" >
+                <a href="index.html">
+                  <h2>WordWise</h2>
+                </a>
             </div>
+        <div class="nav-links1">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Leading Blog</a>
+            <a href="start_writing.html">Start Writing</a>
+            <a href="category.html">Categories</a>
+            <a href="about.html">About</a>
+            <a href="contact_us.html">Contact Us</a>
+            <a href="contact_us.html">Give Feedback</a>
+        </div>
+       
+        <div class="dropdown">
+            <!-- Profile Icon -->
+            <a href="#" class="profile-icon" id="profileDropdown" onclick="toggleDropdown()">
+                <i class="fas fa-user-circle"></i>
+            </a>
         
-            <button class="toggle-button" onclick="toggleMenu()">
-                &#9776; <!-- Hamburger icon -->
-            </button>
-        
-            <nav class="nav-menu" id="nav-menu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="blog.html">Leading Blog</a></li>
-                    <li><a href="start_writing.html">Start Writing</a></li>
-                    <li><a href="category.html">Categories</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact_us.html">Contact Us</a></li>
-                    <li><a href="contact_us.html">Give Feedback</a></li>
-                </ul>
-            </nav>
-    <!-- Navigation Bar Ends -->
-            <div class="auth-buttons">
-                <a href="#login" class="login-btn" onclick="openForm('login')">Login</a>
-                <a href="#signup" class="signup-btn" onclick="openForm('signup')">Signup</a>
-            </div> 
+            <!-- Dropdown Menu -->
+            <ul class="dropdown-menu" id="dropdownMenu">
+                <li><a href="#login" onclick="openForm('login')">Login</a></li>
+                <li><a href="#signup" onclick="openForm('signup')">Signup</a></li>
+            </ul>
+        </div>
+     
         
             <!-- Login Form -->
         <div class="form-popup" id="loginForm">
@@ -77,6 +84,9 @@
                 <input type="email" id="loginEmail" placeholder="Enter Email" name="email" required>
                 <label for="loginPsw"><b>Password</b></label>
                 <input type="password" id="loginPsw" placeholder="Enter Password" name="psw" required minlength="6">
+                <div class="forgot">
+                    <a href="javascript:void(0);" onclick="openForgotPassword()">Forgot Password?</a>
+                  </div>
                 <button type="submit" class="btn">LOGIN</button>
                 <button type="button" class="btn cancel" onclick="closeForm('login')">CLOSE</button>
             </form>
@@ -110,7 +120,19 @@
         </div>
         <script src="signup.js"></script> <!-- Link to your JavaScript file -->
     
-        
+        <!-- Forgot Password Modal -->
+<div id="forgot-password-modal" class="modal">
+    <div class="form-container modal-content">
+      <h2>Forgot Password</h2>
+      <p>Please enter your email address to reset your password.</p>
+  
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your email" required />
+  
+      <button class="btn" onclick="submitForgotPassword()">Submit</button>
+      <button class="btn cancel" onclick="closeForgotPasswordModal()">Cancel</button>
+    </div>
+  </div>
         
         <div class="theme-switch-wrapper">
             <label class="theme-switch" for="checkbox">
@@ -143,7 +165,7 @@
                                     <h3 class="new-post-title">Mouthwatering Memoirs</h3>
                                     <p class="new-post-excerpt">Mouth watering tales from all over the world...</p>
                                 </div>
-                                <button  class="new-read-more-link"><a href="#">Read More</a></button>
+                                <button  class="new-read-more-link"><a href="food.html">Read More</a></button>
                             </div>
                         </article>
                     </div>
@@ -161,7 +183,7 @@
                                     <h3 class="new-post-title">Roaming Routes</h3>
                                     <p class="new-post-excerpt">In the realm of mechanical marvels.</p>
                                 </div>
-                                <button  class="new-read-more-link"><a href="#">Read More</a></button>
+                                <button  class="new-read-more-link"><a href="travel.html">Read More</a></button>
                             </div>
                         </article>
                     </div>
@@ -179,7 +201,7 @@
                                     <h3 class="new-post-title">The Future of Tech</h3>
                                     <p class="new-post-excerpt">Exploring the innovations that are changing the world.</p>
                                 </div>
-                                <button  class="new-read-more-link"><a href="#">Read More</a></button>
+                                <button  class="new-read-more-link"><a href="tech.html">Read More</a></button>
                             </div>
                         </article>
                     </div>
@@ -197,7 +219,7 @@
                                     <h3 class="new-post-title">Living Well</h3>
                                     <p class="new-post-excerpt">Tips and tricks for a balanced life.</p>
                                 </div>
-                                <button  class="new-read-more-link"><a href="#">Read More</a></button>
+                                <button  class="new-read-more-link"><a href="life.html">Read More</a></button>
                             </div>
                         </article>
                     </div>
@@ -215,7 +237,7 @@
                                     <h3 class="new-post-title">Health Tips</h3>
                                     <p class="new-post-excerpt">Best practices for a healthier you.</p>
                                 </div>
-                                <button  class="new-read-more-link"><a href="#">Read More</a></button>
+                                <button  class="new-read-more-link"><a href="health.html">Read More</a></button>
                             </div>
                         </article>
                     </div>
@@ -233,7 +255,7 @@
                                     <h3 class="new-post-title">Fashion Trends</h3>
                                     <p class="new-post-excerpt">Stay stylish with the latest trends.</p>
                                 </div>
-                                <button  class="new-read-more-link"><a href="#">Read More</a></button>
+                                <button  class="new-read-more-link"><a href="fashion.html">Read More</a></button>
                             </div>
                         </article>
                     </div>
@@ -282,28 +304,28 @@
                     </div>
                 </div>
 
-                <!-- Manual navigation -->
-                <div class="navigation-manual">
-                    <label for="radio1" class="manual-btn"></label>
-                    <label for="radio2" class="manual-btn"></label>
-                    <label for="radio3" class="manual-btn"></label>
-                    <label for="radio4" class="manual-btn"></label>
-                    <label for="radio5" class="manual-btn"></label>
-                    <label for="radio6" class="manual-btn"></label>
-                </div>
-            </div>
-            <!-- Swiper end -->
-        </main>
+        <!-- Manual navigation -->
+        <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+            <label for="radio5" class="manual-btn"></label>
+            <label for="radio6" class="manual-btn"></label>
+        </div>
+    </div>
+    <!-- Swiper end -->
+    </main>
 
 
         <!-- footer -->
 
-        <footer id="footer" style="margin-top: 30px;">
-            <div class="footer-container">
-                <div class="row mb-3 col-3-main">
-                    <div class="col-3">
-                        <div id="about-us">
-                            <h2 class="footer-title secondary-title">About Us</h2>
+    <footer id="footer" style="margin-top: 30px;">
+        <div class="footer-container">
+            <div class="row mb-3 col-3-main">
+                <div class="col-3">
+                    <div id="about-us">
+                        <h2 class="footer-title secondary-title">About Us</h2>
 
                             <div class="secondary-title text-secondary">
                                 <p class="mt-2 ">
@@ -433,7 +455,7 @@
         <script src="./darkMode.js"></script>
         <script src="progress_bar.js"></script>
 
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    </body>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</body>
 
 </html>

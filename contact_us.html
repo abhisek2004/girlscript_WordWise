@@ -6,13 +6,27 @@
     <link rel="shortcut icon" type="image/x-icon" href="/images/favi.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./contact_us.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="Scroll_and_progressbar.css" />
     <style>
       /* Custom popup styles */
+      .send-btn{
+        transition: background-color 0.3s ease;
+      }
+      .send-btn:hover {
+        background-color: #3498db; /* Darker shade on hover */
+      }
+
       .popup {
         display: none;
         position: fixed;
@@ -74,9 +88,25 @@
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar"></div>
     </div>
-    <header class="navbar">
-      <div class="logo">
-        <h2><a class="home-link" href="index.html">WordWise</a></h2>
+    <div class="layout-container" style="margin-bottom: 4rem;">
+
+      <header>
+  
+  
+  
+        <div class="logo" >
+          <a href="index.html">
+            <h2>WordWise</h2>
+          </a>
+        </div>
+      <div class="nav-links1">
+          <a href="index.html">Home</a>
+          <a href="blog.html">Leading Blog</a>
+          <a href="start_writing.html">Start Writing</a>
+          <a href="category.html">Categories</a>
+          <a href="about.html">About</a>
+          <a href="contact_us.html">Contact Us</a>
+          <a href="contact_us.html">Give Feedback</a>
       </div>
 
       <button class="toggle-button" onclick="toggleMenu()">
@@ -92,146 +122,162 @@
           <li><a href="category.html">Categories</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact_us.html">Contact Us</a></li>
-          <li><a href="feedback.html">Give Feedback</a></li>
+          <li><a href="contact_us.html">Give Feedback</a></li>
         </ul>
       </nav>
       <!-- Navigation Bar Ends -->
       <div class="auth-buttons">
         <a href="#login" class="login-btn" onclick="openForm('login')">Login</a>
-        <a href="#signup" class="signup-btn" onclick="openForm('signup')">Signup</a>
+        <a href="#signup" class="signup-btn" onclick="openForm('signup')"
+          >Signup</a
+        >
       </div>
 
         <!-- Login Form -->
 <div class="form-popup" id="loginForm">
-  <form class="form-container" onsubmit="return validateLoginForm()">
-      <h2>Login</h2>
-      <label for="loginEmail"><b>Email</b></label>
-      <input type="email" id="loginEmail" placeholder="Enter Email" name="email" required>
-      
+  <form class="form-container" onsubmit="return validateLoginForm()" style="max-width: 400px; margin: auto;">
+      <span class="close-icon" onclick="closeForm('login')">&times;</span>
+      <h2 class="text-center">Login</h2>
+      <div class="form-group">
+          <label for="loginEmail"><b>Email</b></label>
+          <input type="email" class="form-control" id="loginEmail" placeholder="Enter Email" name="email" required>
+      </div>
       <div class="form-group position-relative">
           <label for="loginPsw"><b>Password</b></label>
-          <input type="password" id="loginPsw" placeholder="Enter Password" name="psw" required minlength="6">
+          <input type="password" class="form-control" id="loginPsw" placeholder="Enter Password" name="psw" required minlength="6">
           <i class="bi bi-eye eye-icon" id="toggleLoginPassword" onclick="togglePasswordVisibility('loginPsw', 'toggleLoginPassword')"></i>
       </div>
-
-          <button type="submit" class="btn">LOGIN</button>
-          <button type="button" class="btn cancel" onclick="closeForm('login')">CLOSE</button>
-        </form>
+      <div class="forgot">
+        <a href="javascript:void(0);" onclick="openForgotPassword()">Forgot Password?</a>
       </div>
 
-      <!-- Signup Form -->
-      <div class="form-popup" id="signupForm">
-        <form class="form-container" onsubmit="return validateSignupForm()">
-          <h2>Signup</h2>
+      <button type="submit" class="btn">LOGIN</button>
+      <button type="button" class="btn cancel" onclick="closeForm('login')">CLOSE</button>
+  </form>
+</div>
 
-          <div class="form-group">
-            <label for="name"><b>Full Name</b></label>
-            <input type="text" id="name" placeholder="Enter Full Name" name="name" required>
-          </div>
+<!-- Signup Form -->
+<div class="form-popup" id="signupForm">
+  <form class="form-container" onsubmit="return validateSignupForm()">
+      <h2>Signup</h2>
 
-          <div class="form-group">
-            <label for="signupEmail"><b>Email</b></label>
-            <input type="email" id="signupEmail" placeholder="Enter Email" name="email" required>
-          </div>
+      <div class="form-group">
+          <label for="name"><b>Full Name</b></label>
+          <input type="text" id="name" placeholder="Enter Full Name" name="name" required>
+      </div>
 
-          <div class="form-group position-relative">
-            <label for="signupPsw"><b>Password</b></label>
-            <input type="password" id="signupPsw" placeholder="Enter Password" name="psw" required minlength="6">
-            <i class="bi bi-eye eye-icon" id="toggleSignupPassword"
-              onclick="togglePasswordVisibility('signupPsw', 'toggleSignupPassword')"></i>
-          </div>
+      <div class="form-group">
+          <label for="signupEmail"><b>Email</b></label>
+          <input type="email" id="signupEmail" placeholder="Enter Email" name="email" required>
+      </div>
 
-          <div class="form-group position-relative">
-            <label for="confirmPsw"><b>Confirm Password</b></label>
-            <input type="password" id="confirmPsw" placeholder="Confirm Password" name="confirmPsw" required
-              minlength="6">
-            <i class="bi bi-eye eye-icon" id="toggleConfirmPassword"
-              onclick="togglePasswordVisibility('confirmPsw', 'toggleConfirmPassword')"></i>
-          </div>
+      <div class="form-group position-relative">
+          <label for="signupPsw"><b>Password</b></label>
+          <input type="password" id="signupPsw" placeholder="Enter Password" name="psw" required minlength="6">
+          <i class="bi bi-eye eye-icon" id="toggleSignupPassword" onclick="togglePasswordVisibility('signupPsw', 'toggleSignupPassword')"></i>
+      </div>
+
+      <div class="form-group position-relative">
+          <label for="confirmPsw"><b>Confirm Password</b></label>
+          <input type="password" id="confirmPsw" placeholder="Confirm Password" name="confirmPsw" required minlength="6">
+          <i class="bi bi-eye eye-icon" id="toggleConfirmPassword" onclick="togglePasswordVisibility('confirmPsw', 'toggleConfirmPassword')"></i>
+      </div>
 
       <button type="submit" class="btn">SIGNUP</button>
       <button type="button" class="btn cancel" onclick="closeForm('signup')">CLOSE</button>
   </form>
 </div>
+<!-- Forgot Password Modal -->
+<div id="forgot-password-modal" class="modal">
+  <div class="form-container modal-content">
+    <h2>Forgot Password</h2>
+    <p>Please enter your email address to reset your password.</p>
 
-      <!-- Bootstrap Icons and Script for Eye Icon Functionality -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-      <script>
-        function togglePasswordVisibility(passwordFieldId, iconId) {
-          const passwordField = document.getElementById(passwordFieldId);
-          const togglePassword = document.getElementById(iconId);
-          if (passwordField.type === 'password') {
-            passwordField.type = 'text';
-            togglePassword.classList.remove('bi-eye');
-            togglePassword.classList.add('bi-eye-slash');
-          } else {
-            passwordField.type = 'password';
-            togglePassword.classList.remove('bi-eye-slash');
-            togglePassword.classList.add('bi-eye');
-          }
-        }
-      </script>
+    <label for="email">Email Address</label>
+    <input type="email" id="email" placeholder="Enter your email" required />
 
-      <style>
-        /* Form Container Styles */
-        .form-popup {
-          width: 400px;
-          margin: auto;
-          background-color: #ffffff;
-          border-radius: 10px;
-          padding: 20px;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
+    <button class="btn" onclick="submitForgotPassword()">Submit</button>
+    <button class="btn cancel" onclick="closeForgotPasswordModal()">Cancel</button>
+  </div>
+</div>
 
-        .form-container h2 {
-          margin-bottom: 20px;
-          color: #333;
-        }
+<!-- Bootstrap Icons and Script for Eye Icon Functionality -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<script>
+  function togglePasswordVisibility(passwordFieldId, iconId) {
+      const passwordField = document.getElementById(passwordFieldId);
+      const togglePassword = document.getElementById(iconId);
+      if (passwordField.type === 'password') {
+          passwordField.type = 'text';
+          togglePassword.classList.remove('bi-eye');
+          togglePassword.classList.add('bi-eye-slash');
+      } else {
+          passwordField.type = 'password';
+          togglePassword.classList.remove('bi-eye-slash');
+          togglePassword.classList.add('bi-eye');
+      }
+  }
+</script>
 
-        .form-control {
-          border-radius: 5px;
-          box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-          transition: border-color 0.3s;
-        }
+<style>
+  /* Form Container Styles */
+  .form-popup {
+      width: 400px;
+      margin: auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
 
-        .form-control:focus {
-          border-color: #007bff;
-          box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
+  .form-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+  }
 
-        .btn {
-          margin-top: 15px;
-          border-radius: 5px;
-        }
+  .form-control {
+      border-radius: 5px;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s;
+  }
 
-        .eye-icon {
-          position: absolute;
-          right: 15px;
-          top: 38px;
-          /* Adjust according to input field height */
-          cursor: pointer;
-          color: #007bff;
-        }
+  .form-control:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+  .btn {
+      margin-top: 15px;
+      border-radius: 5px;
+  }
+
+  .eye-icon {
+      position: absolute;
+      right: 15px;
+      top: 38px; /* Adjust according to input field height */
+      cursor: pointer;
+      color: #007bff;
+  }
 
         .position-relative {
           position: relative;
         }
 
-        .btn-block {
-          width: 100%;
-        }
+  .btn-block {
+      width: 100%;
+  }
 
-        /* Hover Effects */
-        .btn:hover {
-          background-color: #0056b3;
-          border-color: #0056b3;
-        }
+  /* Hover Effects */
+  .btn:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+  }
 
-        .btn.cancel:hover {
-          background-color: #6c757d;
-          border-color: #6c757d;
-        }
-      </style>
+  .btn.cancel:hover {
+      background-color: #6c757d;
+      border-color: #6c757d;
+  }
+</style>
 
       <script src="signup.js"></script>
       <!-- Link to your JavaScript file -->
@@ -246,23 +292,26 @@
           </div>
         </label>
         <span id="mode-label"></span>
-            
+        
       </div>
     </header>
+    </div>
 
     <div class="container" style="
         max-width: 600px;
         margin: 50px auto;
         padding: 20px;
-        background-color: #f9f9f9;
+        /* background-color: #f9f9f9; */
+        background-color: var(--background-color);
         border-radius: 10px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 20px var(--text-color);
         text-align: center;
-      ">
+      "
+    >
       <h2 style="color: #3498db; font-size: 28px; margin-bottom: 10px">
         Get in Touch
       </h2>
-      <p style="color: #777; font-size: 16px; margin-bottom: 20px">
+      <p style="color: var(--normal-text-col); font-size: 16px; margin-bottom: 20px">
         Whether you have questions, feedback, or need assistance, our team is
         here to help. Please fill out the form below, and we'll get back to you
         as soon as possible.
@@ -274,87 +323,138 @@
               display: block;
               text-align: left;
               margin-bottom: 5px;
-              color: #333;
+              color: var(--text-color);
               font-size: 14px;
-            ">First Name</label>
-          <input type="text" id="firstName" name="firstName" required style="
+            "
+            >First Name</label
+          >
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            required
+            style="
               width: 100%;
               padding: 10px;
               font-size: 14px;
               border: 2px solid #ddd;
               border-radius: 5px;
-            " />
+            "
+          />
         </div>
-
+        
         <div class="form-group" style="margin-bottom: 15px">
-          <label for="lastName" style="
+          <label
+            for="lastName"
+            style="
               display: block;
               text-align: left;
               margin-bottom: 5px;
-              color: #333;
+              color: var(--text-color);
               font-size: 14px;
-            ">Last Name</label>
-          <input type="text" id="lastName" name="lastName" required style="
+            "
+            >Last Name</label
+          >
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            required
+            style="
               width: 100%;
               padding: 10px;
               font-size: 14px;
               border: 2px solid #ddd;
               border-radius: 5px;
-            " />
+            "
+          />
         </div>
-
+        
         <div class="form-group" style="margin-bottom: 15px">
-          <label for="email" style="
+          <label
+            for="email"
+            style="
               display: block;
               text-align: left;
               margin-bottom: 5px;
-              color: #333;
+              color: var(--text-color);
               font-size: 14px;
-            ">Email Address</label>
-          <input type="email" id="email" name="email" required style="
+            "
+            >Email Address</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            style="
               width: 100%;
               padding: 10px;
               font-size: 14px;
               border: 2px solid #ddd;
               border-radius: 5px;
-            " />
+            "
+          />
         </div>
-
+        
         <div class="form-group" style="margin-bottom: 15px">
-          <label for="phone" style="
+          <label
+            for="phone"
+            style="
               display: block;
               text-align: left;
               margin-bottom: 5px;
-              color: #333;
+              color: var(--text-color);
               font-size: 14px;
-            ">Phone Number</label>
-          <input type="tel" id="phone" name="phone" required style="
+            "
+            >Phone Number</label
+          >
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            style="
               width: 100%;
               padding: 10px;
               font-size: 14px;
               border: 2px solid #ddd;
               border-radius: 5px;
-            " />
+            "
+          />
         </div>
-
+        
         <div class="form-group" style="margin-bottom: 15px">
-          <label for="message" style="
+          <label
+            for="message"
+            style="
               display: block;
               text-align: left;
               margin-bottom: 5px;
-              color: #333;
+              color: var(--text-color);
               font-size: 14px;
-            ">Message</label>
-          <textarea id="message" name="message" rows="4" required style="
+            "
+            >Message</label
+          >
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            required
+            style="
               width: 100%;
               padding: 10px;
               font-size: 14px;
               border: 2px solid #ddd;
               border-radius: 5px;
-            "></textarea>
+            "
+          ></textarea>
         </div>
 
-        <button type="button" onclick="SendEmail(event)" style="
+        <button
+          type="button"
+          onclick="SendEmail(event)"
+          style="
             background-color: #3498db;
             color: white;
             padding: 10px 20px;
@@ -366,7 +466,7 @@
           Send
         </button>
       </form>
-
+      
       <!-- Custom popup -->
       <div class="overlay" id="overlay" style="
           display: none;
@@ -427,6 +527,9 @@
     <!-- added script for contact form  -->
 
     <script src="contact_us.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="profiledropdown.js"></script>
   </body>
 
 </html>
