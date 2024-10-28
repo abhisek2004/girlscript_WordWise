@@ -148,115 +148,103 @@
         </script>
         <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-    </head>
-
-    <body onload="Finish_Loader()">
-        <!-- pre load -->
-        <div id="loader">
-            <div class="loadingspinner">
-                <div id="square1"></div>
-                <div id="square2"></div>
-                <div id="square3"></div>
-                <div id="square4"></div>
-                <div id="square5"></div>
-            </div>
+</head>
+<body onload="Finish_Loader()">
+ <!-- pre load -->
+    <div id="loader">
+<div class="loadingspinner">
+  <div id="square1"></div>
+  <div id="square2"></div>
+  <div id="square3"></div>
+  <div id="square4"></div>
+  <div id="square5"></div>
+</div>
+    </div>
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+<!-- Navigation Bar  -->
+    <header class="navbar">
+        <div class="logo">
+            <h2><a class="home-link" href="index.html">WordWise</a></h2>
         </div>
-        <div class="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
+    
+        <button class="toggle-button" onclick="toggleMenu()">
+            &#9776; <!-- Hamburger icon -->
+        </button>
+    
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Leading Blog</a></li>
+                <li><a href="start_writing.html">Start Writing</a></li>
+                <li><a href="category.html">Categories</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact_us.html">Contact Us</a></li>
+                <li><a href="contact_us.html">Give Feedback</a></li>
+            </ul>
+        </nav>
+<!-- Navigation Bar Ends -->
+        <div class="auth-buttons">
+            <a href="#login" class="login-btn" onclick="openForm('login')">Login</a>
+            <a href="#signup" class="signup-btn" onclick="openForm('signup')">Signup</a>
+        </div> 
+    
+        <!-- Login Form -->
+<!-- Login Form -->
+<div class="form-popup" id="loginForm">
+    <form class="form-container" onsubmit="return validateLoginForm()" style="max-width: 400px; margin: auto;">
+        <span class="close-icon" onclick="closeForm('login')">&times;</span>
+        <h2 class="text-center">Login</h2>
+        <div class="form-group">
+            <label for="loginEmail"><b>Email</b></label>
+            <input type="email" class="form-control" id="loginEmail" placeholder="Enter Email" name="email" required>
         </div>
-        <!-- Navigation Bar  -->
-        <header class="navbar">
-            <div class="logo">
-                <h2><a class="home-link" href="index.html">WordWise</a></h2>
-            </div>
+        <div class="form-group position-relative">
+            <label for="loginPsw"><b>Password</b></label>
+            <input type="password" class="form-control" id="loginPsw" placeholder="Enter Password" name="psw" required minlength="6">
+            <i class="bi bi-eye eye-icon" id="toggleLoginPassword" onclick="togglePasswordVisibility('loginPsw', 'toggleLoginPassword')"></i>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mb-3">LOGIN</button>
+       <!-- Google Sign-In Button -->
+             <button type="button" class="btn google-btn" onclick="handleGoogleLogin()">
+                <img src="./assets/google_icon.jpg" alt="Google Logo" class="google-logo">
+                Sign in with Google</button>
+        <button type="button" class="btn btn-secondary w-100" onclick="closeForm('login')">CLOSE</button>
+    </form>
+</div>
 
-            <button class="toggle-button" onclick="toggleMenu()">
-                &#9776; <!-- Hamburger icon -->
-            </button>
-
-            <nav class="nav-menu" id="nav-menu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="blog.html">Leading Blog</a></li>
-                    <li><a href="start_writing.html">Start Writing</a></li>
-                    <li><a href="category.html">Categories</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact_us.html">Contact Us</a></li>
-                    <li><a href="feedback.html">Give Feedback</a></li>
-                </ul>
-            </nav>
-            <!-- Navigation Bar Ends -->
-            <div class="auth-buttons">
-                <a href="#login" class="login-btn" onclick="openForm('login')">Login</a>
-                <a href="#signup" class="signup-btn" onclick="openForm('signup')">Signup</a>
-            </div>
-
-            <!-- Login Form -->
-            <!-- Login Form -->
-            <div class="form-popup" id="loginForm">
-                <form class="form-container" onsubmit="return validateLoginForm()"
-                    style="max-width: 400px; margin: auto;">
-                    <span class="close-icon" onclick="closeForm('login')">&times;</span>
-                    <h2 class="text-center">Login</h2>
-                    <div class="form-group">
-                        <label for="loginEmail"><b>Email</b></label>
-                        <input type="email" class="form-control" id="loginEmail" placeholder="Enter Email" name="email"
-                            required>
-                    </div>
-                    <div class="form-group position-relative">
-                        <label for="loginPsw"><b>Password</b></label>
-                        <input type="password" class="form-control" id="loginPsw" placeholder="Enter Password"
-                            name="psw" required minlength="6">
-                        <i class="bi bi-eye eye-icon" id="toggleLoginPassword"
-                            onclick="togglePasswordVisibility('loginPsw', 'toggleLoginPassword')"></i>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100 mb-3">LOGIN</button>
-                    <!-- Google Sign-In Button -->
-                    <button type="button" class="btn google-btn" onclick="handleGoogleLogin()">
-                        <img src="./assets/google_icon.jpg" alt="Google Logo" class="google-logo">
-                        Sign in with Google</button>
-                    <button type="button" class="btn btn-secondary w-100" onclick="closeForm('login')">CLOSE</button>
-                </form>
-            </div>
-
-            <!-- Signup Form -->
-            <div class="form-popup" id="signupForm">
-                <form class="form-container" onsubmit="return validateSignupForm()"
-                    style="max-width: 400px; margin: auto;">
-                    <span class="close-icon" onclick="closeForm('signup')">&times;</span>
-                    <h2 class="text-center">Signup</h2>
-                    <div class="form-group">
-                        <label for="name"><b>Full Name</b></label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter Full Name" name="name"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <label for="signupEmail"><b>Email</b></label>
-                        <input type="email" class="form-control" id="signupEmail" placeholder="Enter Email" name="email"
-                            required>
-                    </div>
-                    <div class="form-group position-relative">
-                        <label for="signupPsw"><b>Password</b></label>
-                        <input type="password" class="form-control" id="signupPsw" placeholder="Enter Password"
-                            name="psw" required minlength="6">
-                        <i class="bi bi-eye eye-icon" id="toggleSignupPassword"
-                            onclick="togglePasswordVisibility('signupPsw', 'toggleSignupPassword')"></i>
-                    </div>
-                    <div class="form-group position-relative">
-                        <label for="confirmPsw"><b>Confirm Password</b></label>
-                        <input type="password" class="form-control" id="confirmPsw" placeholder="Confirm Password"
-                            name="confirmPsw" required minlength="6">
-                        <i class="bi bi-eye eye-icon" id="toggleConfirmPassword"
-                            onclick="togglePasswordVisibility('confirmPsw', 'toggleConfirmPassword')"></i>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100 mb-3">SIGNUP</button>
-                    <!-- Google Sign-In Button -->
-                    <button type="button" class="btn google-btn" onclick="handleGoogleLogin()">
-                        <img src="./assets/google_icon.jpg" alt="Google Logo" class="google-logo">
-                        Sign in with Google</button>
-                    <button type="button" class="btn btn-secondary w-100" onclick="closeForm('signup')">CLOSE</button>
-                </form>
-            </div>
+<!-- Signup Form -->
+<div class="form-popup" id="signupForm">
+    <form class="form-container" onsubmit="return validateSignupForm()" style="max-width: 400px; margin: auto;">
+        <span class="close-icon" onclick="closeForm('signup')">&times;</span>
+        <h2 class="text-center">Signup</h2>
+        <div class="form-group">
+            <label for="name"><b>Full Name</b></label>
+            <input type="text" class="form-control" id="name" placeholder="Enter Full Name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="signupEmail"><b>Email</b></label>
+            <input type="email" class="form-control" id="signupEmail" placeholder="Enter Email" name="email" required>
+        </div>
+        <div class="form-group position-relative">
+            <label for="signupPsw"><b>Password</b></label>
+            <input type="password" class="form-control" id="signupPsw" placeholder="Enter Password" name="psw" required minlength="6">
+            <i class="bi bi-eye eye-icon" id="toggleSignupPassword" onclick="togglePasswordVisibility('signupPsw', 'toggleSignupPassword')"></i>
+        </div>
+        <div class="form-group position-relative">
+            <label for="confirmPsw"><b>Confirm Password</b></label>
+            <input type="password" class="form-control" id="confirmPsw" placeholder="Confirm Password" name="confirmPsw" required minlength="6">
+            <i class="bi bi-eye eye-icon" id="toggleConfirmPassword" onclick="togglePasswordVisibility('confirmPsw', 'toggleConfirmPassword')"></i>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mb-3">SIGNUP</button>
+        <!-- Google Sign-In Button -->
+         <button type="button" class="btn google-btn" onclick="handleGoogleLogin()">
+          <img src="./assets/google_icon.jpg" alt="Google Logo" class="google-logo">
+          Sign in with Google</button>
+        <button type="button" class="btn btn-secondary w-100" onclick="closeForm('signup')">CLOSE</button>
+    </form>
+</div>
 
             <!-- Toggle Password Visibility Script -->
             <script>
@@ -275,17 +263,17 @@
                 }
             </script>
 
-            <!-- Styles -->
-            <style>
-                .form-popup {
-                    width: 100%;
-                    max-width: 400px;
-                    margin: auto;
-                    background-color: #ffffff;
-                    border-radius: 10px;
-                    padding: 20px;
-                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                }
+<!-- Styles -->
+<style>
+    .form-popup {
+        width: 100%;
+        max-width: 400px;
+        margin: auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
 
                 .form-container h2 {
                     margin-bottom: 20px;
@@ -1089,50 +1077,50 @@
                 </div>
 
 
-            </div>
-            <!-- the authentication copyright -->
-            <div class="wordwise-footer">
-                <div class="wordwise-footer-content">
-                    <p>&copy; <span id="current-year"></span> WordWise. All rights reserved.</p>
-                    <p>Designed by Anshika</p>
-                </div>
-            </div>
-        </footer>
-        <!-- .footer -->
-        <!-- this script is for twitter icon  starts -->
-        <script src="https://kit.fontawesome.com/856f4a44d7.js" crossorigin="anonymous"></script>
-        <!-- this script is for twitter icon  ends -->
-        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-        <script src="main.js"></script>
-        <script src="./backend/login-Auth/login.js"></script>
-        <script src="./backend/signup-Auth/signup.js"></script>
-        <script src="SignIn_SignUp.js"></script>
-        <script src="darkMode.js"></script>
+      </div>
+       <!-- the authentication copyright -->
+       <div class="wordwise-footer">
+        <div class="wordwise-footer-content">
+          <p>&copy; <span id="current-year"></span> WordWise. All rights reserved.</p>
+          <p>Designed by Anshika</p>
+        </div>
+    </div>
+  </footer>
+<!-- .footer -->
+<!-- this script is for twitter icon  starts -->
+ <script src="https://kit.fontawesome.com/856f4a44d7.js" crossorigin="anonymous"></script>
+<!-- this script is for twitter icon  ends -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+    <script src="./backend/login-Auth/login.js"></script>
+    <script src="./backend/signup-Auth/signup.js"></script>
+    <script src="SignIn_SignUp.js"></script>
+    <script src="darkMode.js"></script>
 
 
-        this script is to display the year in the copyright authentication in the footer
-        <script>
-
-            // For Loader Page
-            const preloader = document.querySelector("#loader");
-            function Finish_Loader() {
-                preloader.style.display = "none";
-            }
-        </script>
-        <script src="script.js"></script>
-        <script src="faq.js"></script>
-        <script src="progress_bar.js"></script>
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <script>
-            window.addEventListener("scroll", function () {
-                var scrollPosition = window.scrollY;
-                var height = document.body.offsetHeight - window.innerHeight;
-                if (scrollPosition > height / 2) {
-                    document.getElementById("backToTop").style.display = "block";
-                } else {
-                    document.getElementById("backToTop").style.display = "none";
-                }
-            });
+    this script is to display the year in the copyright authentication in the footer
+    <script>
+       
+// For Loader Page
+const preloader = document.querySelector("#loader");
+function Finish_Loader(){
+    preloader.style.display = "none";
+}
+    </script>
+    <script src="script.js"></script>
+    <script src="faq.js"></script>
+    <script src="progress_bar.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+      <script>
+        window.addEventListener("scroll", function() {
+  var scrollPosition = window.scrollY;
+  var height = document.body.offsetHeight - window.innerHeight;
+  if (scrollPosition > height / 2) {
+    document.getElementById("backToTop").style.display = "block";
+  } else {
+    document.getElementById("backToTop").style.display = "none";
+  }
+});
 
             document.getElementById("backToTop").addEventListener("click", function () {
                 window.scrollTo({ top: 0, behavior: "smooth" });

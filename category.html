@@ -43,220 +43,213 @@
 
         <div class="layout-container" style="margin-bottom: 4rem;">
 
-            <header class="navbar">
-                <div class="logo">
-                    <h2><a class="home-link" href="index.html">WordWise</a></h2>
-                </div>
-
-                <button class="toggle-button" onclick="toggleMenu()">
-                    &#9776; <!-- Hamburger icon -->
-                </button>
-
-                <nav class="nav-menu" id="nav-menu">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="blog.html">Leading Blog</a></li>
-                        <li><a href="start_writing.html">Start Writing</a></li>
-                        <li><a href="category.html">Categories</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact_us.html">Contact Us</a></li>
-                        <li><a href="feedback.html">Give Feedback</a></li>
-                    </ul>
-                </nav>
-                <!-- Navigation Bar Ends -->
-                <div class="auth-buttons">
-                    <a href="#login" class="login-btn" onclick="openForm('login')">Login</a>
-                    <a href="#signup" class="signup-btn" onclick="openForm('signup')">Signup</a>
-                </div>
-
-                <!-- Login Form -->
-                <div class="form-popup" id="loginForm">
-                    <form class="form-container" onsubmit="return validateLoginForm()">
-                        <h2>Login</h2>
-                        <label for="loginEmail"><b>Email</b></label>
-                        <input type="email" id="loginEmail" placeholder="Enter Email" name="email" required>
-                        <label for="loginPsw"><b>Password</b></label>
-                        <input type="password" id="loginPsw" placeholder="Enter Password" name="psw" required
-                            minlength="6">
-                        <button type="submit" class="btn">LOGIN</button>
-                        <button type="button" class="btn cancel" onclick="closeForm('login')">CLOSE</button>
-                    </form>
-                </div>
-
-                <!-- Signup Form -->
-                <div class="form-popup" id="signupForm">
-                    <form class="form-container" onsubmit="return validateSignupForm()">
-                        <h2>Signup</h2>
-                        <div class="form-group">
-                            <label for="name"><b>Full Name</b></label>
-                            <input type="text" id="name" placeholder="Enter Full Name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupEmail"><b>Email</b></label>
-                            <input type="email" id="signupEmail" placeholder="Enter Email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupPsw"><b>Password</b></label>
-                            <input type="password" id="signupPsw" placeholder="Enter Password" name="psw" required
-                                minlength="6">
-                            <span id="togglePassword" class="toggle-button">Show</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirmPsw"><b>Confirm Password</b></label>
-                            <input type="password" id="confirmPsw" placeholder="Confirm Password" name="confirmPsw"
-                                required minlength="6">
-                            <span id="toggleConfirmPassword" class="toggle-button">Show</span>
-                        </div>
-                        <button type="submit" class="btn">SIGNUP</button>
-                        <button type="button" class="btn cancel" onclick="closeForm('signup')">CLOSE</button>
-                    </form>
-                </div>
-                <script src="signup.js"></script> <!-- Link to your JavaScript file -->
-
-
-
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox">
-                        <div class="slider">
-                            <img src="https://img.icons8.com/emoji/48/000000/sun-emoji.png" alt="Sun"
-                                class="icon sun-icon">
-                            <img src="https://img.icons8.com/emoji/48/000000/crescent-moon-emoji.png" alt="Moon"
-                                class="icon moon-icon">
-                        </div>
-                    </label>
-                    <span id="mode-label"></span>
-                        
-                </div>
-
-            </header>
+        <header class="navbar">
+            <div class="logo">
+                <h2><a class="home-link" href="index.html">WordWise</a></h2>
+            </div>
+        
+            <button class="toggle-button" onclick="toggleMenu()">
+                &#9776; <!-- Hamburger icon -->
+            </button>
+        
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Leading Blog</a></li>
+                    <li><a href="start_writing.html">Start Writing</a></li>
+                    <li><a href="category.html">Categories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact_us.html">Contact Us</a></li>
+                    <li><a href="contact_us.html">Give Feedback</a></li>
+                </ul>
+            </nav>
+    <!-- Navigation Bar Ends -->
+            <div class="auth-buttons">
+                <a href="#login" class="login-btn" onclick="openForm('login')">Login</a>
+                <a href="#signup" class="signup-btn" onclick="openForm('signup')">Signup</a>
+            </div> 
+        
+            <!-- Login Form -->
+        <div class="form-popup" id="loginForm">
+            <form class="form-container" onsubmit="return validateLoginForm()">
+                <h2>Login</h2>
+                <label for="loginEmail"><b>Email</b></label>
+                <input type="email" id="loginEmail" placeholder="Enter Email" name="email" required>
+                <label for="loginPsw"><b>Password</b></label>
+                <input type="password" id="loginPsw" placeholder="Enter Password" name="psw" required minlength="6">
+                <button type="submit" class="btn">LOGIN</button>
+                <button type="button" class="btn cancel" onclick="closeForm('login')">CLOSE</button>
+            </form>
         </div>
-        <!--header-->
+        
+         <!-- Signup Form -->
+         <div class="form-popup" id="signupForm">
+            <form class="form-container" onsubmit="return validateSignupForm()">
+                <h2>Signup</h2>
+                <div class="form-group">
+                    <label for="name"><b>Full Name</b></label>
+                    <input type="text" id="name" placeholder="Enter Full Name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail"><b>Email</b></label>
+                    <input type="email" id="signupEmail" placeholder="Enter Email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPsw"><b>Password</b></label>
+                    <input type="password" id="signupPsw" placeholder="Enter Password" name="psw" required minlength="6">
+                    <span id="togglePassword" class="toggle-button">Show</span>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPsw"><b>Confirm Password</b></label>
+                    <input type="password" id="confirmPsw" placeholder="Confirm Password" name="confirmPsw" required minlength="6">
+                    <span id="toggleConfirmPassword" class="toggle-button">Show</span>
+                </div>
+                <button type="submit" class="btn">SIGNUP</button>
+                <button type="button" class="btn cancel" onclick="closeForm('signup')">CLOSE</button>
+            </form>
+        </div>
+        <script src="signup.js"></script> <!-- Link to your JavaScript file -->
+    
+        
+        
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox">
+                <div class="slider">
+                    <img src="https://img.icons8.com/emoji/48/000000/sun-emoji.png" alt="Sun" class="icon sun-icon">
+                    <img src="https://img.icons8.com/emoji/48/000000/crescent-moon-emoji.png" alt="Moon" class="icon moon-icon">
+                </div>
+            </label>
+            <span id="mode-label"></span>
+        </div>
+        
+        </header>
+    </div>
+    <!--header-->
 
 
-        <main>
-            <section class="category-container">
-                <div class="category-row">
-                    <div class="new-category-box">
-                        <div class="new-post-list">
-                            <article class="new-post-item">
-                                <div class="new-post-thumbnail">
-                                    <img src="./assets/img5.jpg" alt="Post Image">
+    <main>
+        <section class="category-container">
+            <div class="category-row">
+                <div class="new-category-box">
+                    <div class="new-post-list">
+                        <article class="new-post-item">
+                            <div class="new-post-thumbnail">
+                                <img src="./assets/img5.jpg" alt="Post Image">
+                            </div>
+                            <div class="new-post-content">
+                                <div class="new-post-data">
+                                    <h2 class="new-category-title">Food</h2>
+                                    <h3 class="new-post-title">Mouthwatering Memoirs</h3>
+                                    <p class="new-post-excerpt">Mouth watering tales from all over the world...</p>
                                 </div>
-                                <div class="new-post-content">
-                                    <div class="new-post-data">
-                                        <h2 class="new-category-title">Food</h2>
-                                        <h3 class="new-post-title">Mouthwatering Memoirs</h3>
-                                        <p class="new-post-excerpt">Mouth watering tales from all over the world...</p>
-                                    </div>
-                                    <button class="new-read-more-link"><a href="#">Read More</a></button>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-
-                    <div class="new-category-box">
-                        <div class="new-post-list">
-                            <article class="new-post-item">
-                                <div class="new-post-thumbnail">
-                                    <img src="./assets/img21.jpg" alt="Post Image">
-                                </div>
-                                <div class="new-post-content">
-                                    <div class="new-post-data">
-                                        <h2 class="new-category-title">Travel</h2>
-                                        <h3 class="new-post-title">Roaming Routes</h3>
-                                        <p class="new-post-excerpt">In the realm of mechanical marvels.</p>
-                                    </div>
-                                    <button class="new-read-more-link"><a href="#">Read More</a></button>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-
-                    <div class="new-category-box">
-                        <div class="new-post-list">
-                            <article class="new-post-item">
-                                <div class="new-post-thumbnail">
-                                    <img src="./assets/img2.jpg" alt="Post Image">
-                                </div>
-                                <div class="new-post-content">
-                                    <div class="new-post-data">
-                                        <h2 class="new-category-title">Technology</h2>
-                                        <h3 class="new-post-title">The Future of Tech</h3>
-                                        <p class="new-post-excerpt">Exploring the innovations that are changing the
-                                            world.</p>
-                                    </div>
-                                    <button class="new-read-more-link"><a href="#">Read More</a></button>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-
-                    <div class="new-category-box">
-                        <div class="new-post-list">
-                            <article class="new-post-item">
-                                <div class="new-post-thumbnail">
-                                    <img src="./assets/img7.jpg" alt="Post Image">
-                                </div>
-                                <div class="new-post-content">
-                                    <div class="new-post-data">
-                                        <h2 class="new-category-title">Lifestyle</h2>
-                                        <h3 class="new-post-title">Living Well</h3>
-                                        <p class="new-post-excerpt">Tips and tricks for a balanced life.</p>
-                                    </div>
-                                    <button class="new-read-more-link"><a href="#">Read More</a></button>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-
-                    <div class="new-category-box">
-                        <div class="new-post-list">
-                            <article class="new-post-item">
-                                <div class="new-post-thumbnail">
-                                    <img src="./assets/health.jpeg" alt="Post Image">
-                                </div>
-                                <div class="new-post-content">
-                                    <div class="new-post-data">
-                                        <h2 class="new-category-title">Health</h2>
-                                        <h3 class="new-post-title">Health Tips</h3>
-                                        <p class="new-post-excerpt">Best practices for a healthier you.</p>
-                                    </div>
-                                    <button class="new-read-more-link"><a href="#">Read More</a></button>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-
-                    <div class="new-category-box">
-                        <div class="new-post-list">
-                            <article class="new-post-item">
-                                <div class="new-post-thumbnail">
-                                    <img src="./assets/fashion.jpeg" alt="Post Image">
-                                </div>
-                                <div class="new-post-content">
-                                    <div class="new-post-data">
-                                        <h2 class="new-category-title">Fashion</h2>
-                                        <h3 class="new-post-title">Fashion Trends</h3>
-                                        <p class="new-post-excerpt">Stay stylish with the latest trends.</p>
-                                    </div>
-                                    <button class="new-read-more-link"><a href="#">Read More</a></button>
-                                </div>
-                            </article>
-                        </div>
+                                <button  class="new-read-more-link"><a href="#">Read More</a></button>
+                            </div>
+                        </article>
                     </div>
                 </div>
-            </section>
 
-            <div class="sliderr">
-                <div class="slides">
-                    <!-- Radio buttons for navigation -->
-                    <input type="radio" name="radio-btn" id="radio1" checked>
-                    <input type="radio" name="radio-btn" id="radio2">
-                    <input type="radio" name="radio-btn" id="radio3">
-                    <input type="radio" name="radio-btn" id="radio4">
-                    <input type="radio" name="radio-btn" id="radio5">
-                    <input type="radio" name="radio-btn" id="radio6">
+                <div class="new-category-box">
+                    <div class="new-post-list">
+                        <article class="new-post-item">
+                            <div class="new-post-thumbnail">
+                                <img src="./assets/img21.jpg" alt="Post Image">
+                            </div>
+                            <div class="new-post-content">
+                                <div class="new-post-data">
+                                    <h2 class="new-category-title">Travel</h2>
+                                    <h3 class="new-post-title">Roaming Routes</h3>
+                                    <p class="new-post-excerpt">In the realm of mechanical marvels.</p>
+                                </div>
+                                <button  class="new-read-more-link"><a href="#">Read More</a></button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="new-category-box">
+                    <div class="new-post-list">
+                        <article class="new-post-item">
+                            <div class="new-post-thumbnail">
+                                <img src="./assets/img2.jpg" alt="Post Image">
+                            </div>
+                            <div class="new-post-content">
+                                <div class="new-post-data">
+                                    <h2 class="new-category-title">Technology</h2>
+                                    <h3 class="new-post-title">The Future of Tech</h3>
+                                    <p class="new-post-excerpt">Exploring the innovations that are changing the world.</p>
+                                </div>
+                                <button  class="new-read-more-link"><a href="#">Read More</a></button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="new-category-box">
+                    <div class="new-post-list">
+                        <article class="new-post-item">
+                            <div class="new-post-thumbnail">
+                                <img src="./assets/img7.jpg" alt="Post Image">
+                            </div>
+                            <div class="new-post-content">
+                                <div class="new-post-data">
+                                    <h2 class="new-category-title">Lifestyle</h2>
+                                    <h3 class="new-post-title">Living Well</h3>
+                                    <p class="new-post-excerpt">Tips and tricks for a balanced life.</p>
+                                </div>
+                                <button  class="new-read-more-link"><a href="#">Read More</a></button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="new-category-box">
+                    <div class="new-post-list">
+                        <article class="new-post-item">
+                            <div class="new-post-thumbnail">
+                                <img src="./assets/health.jpeg" alt="Post Image">
+                            </div>
+                            <div class="new-post-content">
+                                <div class="new-post-data">
+                                    <h2 class="new-category-title">Health</h2>
+                                    <h3 class="new-post-title">Health Tips</h3>
+                                    <p class="new-post-excerpt">Best practices for a healthier you.</p>
+                                </div>
+                                <button  class="new-read-more-link"><a href="#">Read More</a></button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="new-category-box">
+                    <div class="new-post-list">
+                        <article class="new-post-item">
+                            <div class="new-post-thumbnail">
+                                <img src="./assets/fashion.jpeg" alt="Post Image">
+                            </div>
+                            <div class="new-post-content">
+                                <div class="new-post-data">
+                                    <h2 class="new-category-title">Fashion</h2>
+                                    <h3 class="new-post-title">Fashion Trends</h3>
+                                    <p class="new-post-excerpt">Stay stylish with the latest trends.</p>
+                                </div>
+                                <button  class="new-read-more-link"><a href="#">Read More</a></button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <div class="sliderr">
+        <div class="slides">
+            <!-- Radio buttons for navigation -->
+            <input type="radio" name="radio-btn" id="radio1" checked>
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+            <input type="radio" name="radio-btn" id="radio5">
+            <input type="radio" name="radio-btn" id="radio6">
 
                     <!-- Slide images -->
                     <div class="slide first">
@@ -425,16 +418,16 @@
                 </div>
 
 
+        </div>
+        <!-- the authentication copyright -->
+        <div class="wordwise-footer">
+            <div class="wordwise-footer-content">
+                <p>&copy; <span id="current-year"></span> WordWise. All rights reserved.</p>
+                <p>Designed by Anshika</p>
             </div>
-            <!-- the authentication copyright -->
-            <div class="wordwise-footer">
-                <div class="wordwise-footer-content">
-                    <p>&copy; <span id="current-year"></span> WordWise. All rights reserved.</p>
-                    <p>Designed by Anshika</p>
-                </div>
-            </div>
-        </footer>
-        <!-- .footer -->
+        </div>
+    </footer>
+    <!-- .footer -->
 
         <script src="main.js"></script>
         <script src="./darkMode.js"></script>
